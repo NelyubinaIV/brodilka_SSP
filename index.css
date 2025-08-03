@@ -27,75 +27,52 @@
 body {
   font-family: var(--font-body);
   color: var(--color-text);
-  background-color: var(--color-bg-start); /* Fallback color */
+  background-color: var(--color-bg-start);
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
-  overflow: hidden;
-}
-
-#game-container {
-  width: 100%;
-  max-width: 1400px;
-  height: 95vh;
-  max-height: 800px;
-  background-image: url('background.jpg');
-  background-size: cover;
-  background-position: center;
-  border: 2px solid var(--color-gold);
-  border-radius: 20px;
-  box-shadow: 0 0 25px rgba(255, 215, 0, 0.5);
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-}
-
-header .title {
-  font-family: var(--font-title);
-  text-align: center;
-  font-size: 2.5rem;
-  color: var(--color-gold);
-  text-shadow: 0 0 10px var(--color-gold);
-  margin-bottom: 20px;
+  padding: 8px;
+  overflow: auto;
 }
 
 #game {
   display: grid;
-  grid-template-columns: 3fr 1fr;
-  gap: 20px;
+  grid-template-columns: 2fr 1fr;
+  gap: 12px; /* Уменьшено с 15px */
   flex-grow: 1;
   overflow: hidden;
 }
 
 #board-container {
   position: relative;
-  overflow: auto;
-  padding: 10px;
+  overflow: hidden;
+  padding: 8px; /* Уменьшено с 10px */
   border: 1px solid rgba(255, 215, 0, 0.3);
-  border-radius: 15px;
+  border-radius: 12px; /* Уменьшено с 15px */
   background: rgba(0,0,0,0.4);
   backdrop-filter: blur(3px);
+  min-height: 0;
 }
 
 #board {
   position: relative;
   width: 100%;
   height: 100%;
+  min-height: 280px; /* Уменьшено с 300px */
 }
 
 .cell {
   position: absolute;
-  width: 60px;
-  height: 60px;
+  width: 38px; /* Уменьшено с 45px */
+  height: 38px;
   background-color: rgba(255, 255, 255, 0.1);
   border: 1px solid var(--color-silver);
-  border-radius: 10px;
+  border-radius: 6px; /* Уменьшено с 8px */
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.5rem;
+  font-size: 0.95rem; /* Уменьшено с 1.1rem */
   font-weight: bold;
   transition: all 0.3s ease;
   color: var(--color-silver);
@@ -112,8 +89,8 @@ header .title {
 .cell.event { background-color: #4a00e0; color: white; }
 
 .player-token {
-  width: 32px;
-  height: 32px;
+  width: 24px; /* Уменьшено с 28px */
+  height: 24px;
   border-radius: 50%;
   position: absolute;
   transition: all 0.5s ease-in-out;
@@ -122,7 +99,7 @@ header .title {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 24px;
+  font-size: 16px; /* Уменьшено с 18px */
   background-color: rgba(0, 0, 0, 0.5);
   text-shadow: 0 0 5px black;
 }
@@ -130,31 +107,35 @@ header .title {
 #sidebar {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  padding: 20px;
+  gap: 12px; /* Уменьшено с 15px */
+  padding: 12px; /* Уменьшено с 15px */
   background: rgba(0, 0, 0, 0.5);
-  border-radius: 15px;
+  border-radius: 12px; /* Уменьшено с 15px */
   backdrop-filter: blur(5px);
+  overflow-y: auto;
 }
 
 #scoreboard h3, #turn-indicator p {
   font-family: var(--font-title);
-  font-size: 1.8rem;
+  font-size: 1.3rem; /* Уменьшено с 1.5rem */
   color: var(--color-gold);
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 6px; /* Уменьшено с 8px */
 }
+
 #scoreboard ul {
   list-style: none;
 }
+
 #scoreboard li {
-  padding: 8px;
-  border-radius: 5px;
-  margin-bottom: 5px;
-  font-size: 1.1rem;
+  padding: 5px; /* Уменьшено с 6px */
+  border-radius: 4px;
+  margin-bottom: 3px; /* Уменьшено с 4px */
+  font-size: 0.9rem; /* Уменьшено с 1rem */
   transition: all 0.3s ease;
   background-color: rgba(0,0,0,0.2);
 }
+
 #scoreboard li.active {
   background: rgba(255, 215, 0, 0.3);
   box-shadow: 0 0 10px var(--color-gold);
@@ -167,9 +148,9 @@ header .title {
 }
 
 #dice-container {
-  width: 100px;
-  height: 100px;
-  margin: 0 auto 20px auto;
+  width: 70px; /* Уменьшено с 80px */
+  height: 70px;
+  margin: 0 auto 12px auto; /* Уменьшено с 15px */
   perspective: 1000px;
 }
 
@@ -177,13 +158,13 @@ header .title {
   width: 100%;
   height: 100%;
   position: relative;
-  font-size: 4rem;
-  line-height: 100px;
+  font-size: 2.5rem; /* Уменьшено с 3rem */
+  line-height: 70px;
   text-align: center;
   color: #fff;
   background: rgba(0,0,0,0.5);
   border: 2px solid var(--color-gold);
-  border-radius: 15px;
+  border-radius: 10px; /* Уменьшено с 12px */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -194,9 +175,9 @@ header .title {
   background: linear-gradient(45deg, var(--color-gold), #ffec8c);
   color: var(--color-bg-start);
   border: none;
-  padding: 15px 30px;
+  padding: 10px 20px; /* Уменьшено с 12px 24px */
   font-family: var(--font-body);
-  font-size: 1.2rem;
+  font-size: 0.9rem; /* Уменьшено с 1rem */
   font-weight: 700;
   border-radius: 50px;
   cursor: pointer;
@@ -231,99 +212,86 @@ header .title {
   justify-content: center;
   align-items: center;
   z-index: 100;
+  padding: 20px;
 }
 
 .modal-content {
   background: var(--color-bg-mid);
-  padding: 30px;
-  border-radius: 20px;
+  padding: 20px; /* Уменьшено с 25px */
+  border-radius: 15px; /* Уменьшено с 20px */
   border: 2px solid var(--color-gold);
   width: 90%;
-  max-width: 600px;
+  max-width: 480px; /* Уменьшено с 500px */
   text-align: center;
   box-shadow: 0 0 30px rgba(0,0,0,0.5);
+  max-height: 80vh;
+  overflow-y: auto;
 }
 
 .modal-content h3 {
   font-family: var(--font-title);
-  font-size: 2.2rem;
+  font-size: 1.6rem; /* Уменьшено с 1.8rem */
   color: var(--color-gold);
-  margin-bottom: 20px;
+  margin-bottom: 12px; /* Уменьшено с 15px */
 }
+
 .modal-content p {
-  font-size: 1.2rem;
-  margin-bottom: 20px;
-  line-height: 1.6;
+  font-size: 0.9rem; /* Уменьшено с 1rem */
+  margin-bottom: 12px; /* Уменьшено с 15px */
+  line-height: 1.4; /* Уменьшено с 1.5 */
 }
+
 #options-container {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-bottom: 20px;
+  gap: 6px; /* Уменьшено с 8px */
+  margin-bottom: 12px; /* Уменьшено с 15px */
 }
+
 .option-btn {
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid var(--color-silver);
   color: var(--color-text);
-  padding: 12px;
-  border-radius: 10px;
+  padding: 8px; /* Уменьшено с 10px */
+  border-radius: 6px; /* Уменьшено с 8px */
   cursor: pointer;
   transition: all 0.2s ease;
-  font-size: 1.1rem;
+  font-size: 0.85rem; /* Уменьшено с 0.9rem */
 }
+
 .option-btn:hover {
   background: rgba(255, 215, 0, 0.3);
 }
+
 .option-btn.selected {
   background: var(--color-glow);
   color: #000;
 }
 
 #answer-feedback {
-  font-size: 1.2rem;
+  font-size: 0.9rem; /* Уменьшено с 1rem */
   font-weight: bold;
-  margin: 20px 0;
-  padding: 10px;
-  border-radius: 5px;
+  margin: 12px 0; /* Уменьшено с 15px */
+  padding: 6px; /* Уменьшено с 8px */
+  border-radius: 4px;
 }
 
-.modal-content button { margin: 5px; }
+.modal-content button { margin: 3px; /* Уменьшено с 4px */ }
 
 #winner-modal .modal-content {
     background: linear-gradient(45deg, var(--color-gold), #c1a00a);
 }
+
 #winner-text {
-    font-size: 3rem;
+    font-size: 2.2rem; /* Уменьшено с 2.5rem */
     color: var(--color-bg-start);
     font-family: var(--font-title);
 }
+
 #restart-game {
     background: var(--color-bg-mid);
     color: var(--color-text);
 }
-
-@media (max-width: 1200px) {
-  #game {
-    grid-template-columns: 1fr;
-    grid-template-rows: 2fr 1fr;
-  }
-  #sidebar {
-    flex-direction: row;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: space-around;
-  }
-  #controls { margin-top: 0; }
-}
-
-@media (max-width: 768px) {
-    body { padding: 5px; }
-    #game-container { padding: 10px; height: 98vh; }
-    header .title { font-size: 1.8rem; }
-    #sidebar { flex-direction: column; }
-    .cell { width: 40px; height: 40px; font-size: 1rem; }
-    .player-token { width: 28px; height: 28px; font-size: 20px; }
-}/* Добавить к существующему CSS: */
 
 /* Стили для модального окна настройки команд */
 .team-setup-modal {
@@ -338,55 +306,56 @@ header .title {
   justify-content: center;
   align-items: center;
   z-index: 200;
+  padding: 20px;
 }
 
 .team-setup-content {
   background: linear-gradient(135deg, var(--color-bg-mid), var(--color-bg-end));
-  padding: 40px;
-  border-radius: 20px;
+  padding: 25px; /* Уменьшено с 30px */
+  border-radius: 15px; /* Уменьшено с 20px */
   border: 3px solid var(--color-gold);
   width: 90%;
-  max-width: 500px;
+  max-width: 400px; /* Уменьшено с 450px */
   text-align: center;
   box-shadow: 0 0 40px rgba(255, 215, 0, 0.6);
 }
 
 .team-setup-content h2 {
   font-family: var(--font-title);
-  font-size: 2.5rem;
+  font-size: 1.8rem; /* Уменьшено с 2rem */
   color: var(--color-gold);
   text-shadow: 0 0 15px var(--color-gold);
-  margin-bottom: 30px;
+  margin-bottom: 20px; /* Уменьшено с 25px */
 }
 
 .team-input-container {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  margin-bottom: 30px;
+  gap: 12px; /* Уменьшено с 15px */
+  margin-bottom: 20px; /* Уменьшено с 25px */
 }
 
 .team-input-group {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 5px; /* Уменьшено с 6px */
 }
 
 .team-input-group label {
   font-family: var(--font-body);
-  font-size: 1.2rem;
+  font-size: 0.9rem; /* Уменьшено с 1rem */
   color: var(--color-text);
   text-align: left;
 }
 
 .team-input-group input {
-  padding: 12px 15px;
+  padding: 8px 10px; /* Уменьшено с 10px 12px */
   border: 2px solid var(--color-silver);
-  border-radius: 10px;
+  border-radius: 6px; /* Уменьшено с 8px */
   background: rgba(255, 255, 255, 0.1);
   color: var(--color-text);
   font-family: var(--font-body);
-  font-size: 1.1rem;
+  font-size: 0.9rem; /* Уменьшено с 1rem */
   transition: all 0.3s ease;
 }
 
@@ -405,9 +374,9 @@ header .title {
   background: linear-gradient(45deg, var(--color-gold), #ffec8c);
   color: var(--color-bg-start);
   border: none;
-  padding: 15px 40px;
+  padding: 10px 25px; /* Уменьшено с 12px 30px */
   font-family: var(--font-body);
-  font-size: 1.3rem;
+  font-size: 1rem; /* Уменьшено с 1.1rem */
   font-weight: 700;
   border-radius: 50px;
   cursor: pointer;
@@ -430,7 +399,7 @@ header .title {
 
 /* Стили для кнопки новой игры */
 #game-controls {
-  margin-top: 20px;
+  margin-top: 12px; /* Уменьшено с 15px */
   text-align: center;
 }
 
@@ -438,11 +407,11 @@ header .title {
   background: linear-gradient(45deg, #6c757d, #8d9498);
   color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 6px 12px; /* Уменьшено с 8px 16px */
   font-family: var(--font-body);
-  font-size: 1rem;
+  font-size: 0.8rem; /* Уменьшено с 0.9rem */
   font-weight: 600;
-  border-radius: 25px;
+  border-radius: 15px; /* Уменьшено с 20px */
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 0 10px rgba(108, 117, 125, 0.3);
@@ -453,30 +422,218 @@ header .title {
   box-shadow: 0 0 15px rgba(108, 117, 125, 0.5);
 }
 
-/* Цвета команд (только для 2 команд) */
-:root {
-  --team-0-color: #ae0001; /* Красный */
-  --team-1-color: #000a90; /* Синий */
+/* Адаптивность для планшетов */
+@media (max-width: 1024px) {
+  #game-container {
+    max-width: 100%;
+    height: 95vh;
+    padding: 10px;
+  }
+  
+  header .title {
+    font-size: 1.6rem;
+    margin-bottom: 8px;
+  }
+  
+  #game {
+    grid-template-columns: 1fr;
+    grid-template-rows: 2fr 1fr;
+  }
+  
+  #board-container {
+    min-height: 220px;
+  }
+  
+  .cell {
+    width: 35px;
+    height: 35px;
+    font-size: 0.9rem;
+  }
+  
+  .player-token {
+    width: 22px;
+    height: 22px;
+    font-size: 14px;
+  }
+  
+  #sidebar {
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 8px;
+    gap: 8px;
+  }
+  
+  #controls {
+    margin-top: 0;
+  }
+  
+  #dice-container {
+    width: 55px;
+    height: 55px;
+  }
+  
+  #dice {
+    font-size: 2.2rem;
+    line-height: 55px;
+  }
 }
 
 /* Адаптивность для мобильных */
 @media (max-width: 768px) {
+  body {
+    padding: 4px;
+  }
+  
+  #game-container {
+    padding: 6px;
+    height: 98vh;
+    border-radius: 12px;
+  }
+  
+  header .title {
+    font-size: 1.3rem;
+    margin-bottom: 6px;
+  }
+  
+  #game {
+    gap: 8px;
+  }
+  
+  #board-container {
+    padding: 4px;
+    min-height: 180px;
+  }
+  
+  .cell {
+    width: 30px;
+    height: 30px;
+    font-size: 0.8rem;
+    border-radius: 4px;
+  }
+  
+  .player-token {
+    width: 18px;
+    height: 18px;
+    font-size: 12px;
+  }
+  
+  #sidebar {
+    flex-direction: column;
+    padding: 6px;
+    gap: 6px;
+  }
+  
+  #scoreboard h3, #turn-indicator p {
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+  }
+  
+  #scoreboard li {
+    padding: 3px;
+    font-size: 0.8rem;
+  }
+  
+  #dice-container {
+    width: 45px;
+    height: 45px;
+    margin-bottom: 8px;
+  }
+  
+  #dice {
+    font-size: 1.8rem;
+    line-height: 45px;
+    border-radius: 6px;
+  }
+  
+  #rollDice {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+  
   .team-setup-content {
-    padding: 30px 20px;
-    margin: 10px;
+    padding: 15px 12px;
+    margin: 8px;
   }
   
   .team-setup-content h2 {
-    font-size: 2rem;
+    font-size: 1.4rem;
   }
   
   .team-input-group input {
-    font-size: 1rem;
-    padding: 10px 12px;
+    font-size: 0.8rem;
+    padding: 6px 8px;
   }
   
   #start-game-btn {
-    font-size: 1.1rem;
-    padding: 12px 30px;
+    font-size: 0.9rem;
+    padding: 8px 20px;
+  }
+  
+  .modal-content {
+    padding: 15px 12px;
+    max-width: 95%;
+  }
+  
+  .modal-content h3 {
+    font-size: 1.3rem;
+  }
+  
+  .modal-content p {
+    font-size: 0.8rem;
+  }
+  
+  .option-btn {
+    font-size: 0.75rem;
+    padding: 6px;
   }
 }
+
+/* Очень маленькие экраны */
+@media (max-width: 480px) {
+  .cell {
+    width: 25px;
+    height: 25px;
+    font-size: 0.7rem;
+  }
+  
+  .player-token {
+    width: 14px;
+    height: 14px;
+    font-size: 10px;
+  }
+  
+  header .title {
+    font-size: 1.1rem;
+  }
+  
+  #board-container {
+    min-height: 140px;
+  }
+}-container {
+  width: 100%;
+  max-width: 1100px; /* Уменьшено с 1200px */
+  height: 85vh; /* Уменьшено с 90vh */
+  max-height: 650px; /* Уменьшено с 700px */
+  background-image: url('background.jpg');
+  background-size: cover;
+  background-position: center;
+  border: 2px solid var(--color-gold);
+  border-radius: 15px; /* Уменьшено с 20px */
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  padding: 12px; /* Уменьшено с 15px */
+}
+
+header .title {
+  font-family: var(--font-title);
+  text-align: center;
+  font-size: 1.8rem; /* Уменьшено с 2rem */
+  color: var(--color-gold);
+  text-shadow: 0 0 10px var(--color-gold);
+  margin-bottom: 12px; /* Уменьшено с 15px */
+}
+
+#game
