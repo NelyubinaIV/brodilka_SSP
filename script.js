@@ -87,6 +87,15 @@ document.addEventListener('DOMContentLoaded', () => {
         { name: 'Команда 2', icon: '🦅' }
     ];
 
+    // Функция для получения размера клетки в зависимости от размера экрана
+    function getCellSize() {
+        const width = window.innerWidth;
+        if (width <= 480) return 28;
+        if (width <= 768) return 35;
+        if (width <= 1024) return 40;
+        return 45;
+    }
+
     // Новый путь доски для 30 клеток (6x5 сетка)
     function createBoardPath() {
         const path = [
@@ -172,19 +181,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderBoard() {
         boardEl.innerHTML = '';
+        
+        const boardRect = boardEl.getBoundingClientRect();
+        const boardWidth = boardRect.width;
+        const boardHeight = boardRect.height;
+        const cellSize = getCellSize();
+        const numCols = 6;
+        const numRows = 5;
+        
+        // Вычисляем доступное пространство
+        const availableWidth = boardWidth - cellSize;
+        const availableHeight = boardHeight - cellSize;
+        
         boardPath.forEach((pos, i) => {
             const cell = document.createElement('div');
             cell.classList.add('cell');
             cell.dataset.id = i;
             
-            const boardWidth = boardEl.clientWidth;
-            const boardHeight = boardEl.clientHeight;
-            const cellWidth = 60;
-            const cellHeight = 60;
-            const numCols = 6; // Изменено с 9 на 6
-            const numRows = 5;
-            cell.style.left = `${(pos.x / (numCols - 1)) * (boardWidth - cellWidth)}px`;
-            cell.style.top = `${(pos.y / (numRows - 1)) * (boardHeight - cellHeight)}px`;
+            // Позиционируем клетки с учетом размера доски
+            const left = (pos.x / (numCols - 1)) * availableWidth;
+            const top = (pos.y / (numRows - 1)) * availableHeight;
+            
+            cell.style.left = `${left}px`;
+            cell.style.top = `${top}px`;
+            cell.style.width = `${cellSize}px`;
+            cell.style.height = `${cellSize}px`;
             
             const cellData = gameData[i];
             cell.textContent = i + 1;
@@ -225,8 +246,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const token = document.getElementById(`player${playerId}`);
         const cell = document.querySelector(`.cell[data-id="${newPosition}"]`);
         if (cell && token) {
-            token.style.left = `${cell.offsetLeft + cell.offsetWidth / 2 - token.offsetWidth / 2 + playerId * 8}px`;
-            token.style.top = `${cell.offsetTop + cell.offsetHeight / 4 + playerId * 8}px`;
+            const tokenSize = window.innerWidth <= 480 ? 16 : (window.innerWidth <= 768 ? 20 : (window.innerWidth <= 1024 ? 24 : 28));
+            const offset = playerId * (tokenSize / 4 + 2);
+            
+            token.style.left = `${cell.offsetLeft + cell.offsetWidth / 2 - tokenSize / 2 + offset}px`;
+            token.style.top = `${cell.offsetTop + cell.offsetHeight / 4 + offset}px`;
+            token.style.width = `${tokenSize}px`;
+            token.style.height = `${tokenSize}px`;
         }
     }
     
@@ -460,5 +486,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Инициализация
     validateTeamNames();
     showTeamSetup();
-    window.addEventListener('resize', renderBoard);
+    
+    // Обработчик изменения размера окна
+    window.addEventListener('resize', () => {
+        setTimeout(renderBoard, 100); // Небольшая задержка для завершения изменения размера
+    });
 });
